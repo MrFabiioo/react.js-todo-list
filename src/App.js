@@ -29,6 +29,24 @@ function App() {
     const searchText =searchValue.toLocaleLowerCase();
     return todoText.includes(searchText);
   });
+
+  const completeTodos= (text)=>{
+    const newTodos =[...todos];
+    const todoIndex=newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos[todoIndex].completed=true;
+    setTodos(newTodos)
+  }
+
+  const deleteTodos= (text)=>{
+    const newTodos =[...todos];
+    const todoIndex=newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos.splice(todoIndex,1);
+    setTodos(newTodos)
+  }
   return (
   <React.Fragment>
     <TodoCounter completed={completedTodos}  total={totalTodos} />
@@ -40,7 +58,9 @@ function App() {
         <TodoItem 
         key={todo.text} 
         text={todo.text}
-        completed={todo.completed}  
+        completed={todo.completed}
+        onComplete ={()=>completeTodos(todo.text)}
+        onDelete={()=>deleteTodos(todo.text)}
         />
       ))}
     </TodoList>
