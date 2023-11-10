@@ -1,4 +1,4 @@
-import './styles/TodoItem.css'
+import './TodoItem.css'
 import {CompleteIcon} from '../Icons/CompleteIcon';
 import {DeleteIcon} from '../Icons/DeleteIcon';
 
