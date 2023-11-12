@@ -1,7 +1,8 @@
 //import logo from './platzi.webp';
 import React from 'react';
-import { useLocalStorage } from './useLocalStorage';
+//import { useLocalStorage } from '../TodoContext/useLocalStorage';
 import { AppUI } from './AppUI';
+import {  TodoProvider } from '../TodoContext/TodoContext';
 // const defaultTodos =[
 //   {text:'Cortar cebello',completed:true},
 //   {text:'sacar reciclaje',completed:false},
@@ -16,50 +17,12 @@ import { AppUI } from './AppUI';
 
 
 function App() {
-  const{item:todos,saveItem:saveTodos,error,loading}= useLocalStorage('TODOS_V1',[]);
-  const [searchValue,setSearchValue]= React.useState('');
-  //console.warn(`Se esta buscando: ${searchValue}`)
-
-  const completedTodos =todos.filter(todo=>!!todo.completed).length;
-  const totalTodos=todos.length;
-
-
-  const searchedTodos =todos.filter((todo)=>{
-    const todoText = todo.text.toLocaleLowerCase();
-    const searchText =searchValue.toLocaleLowerCase();
-    return todoText.includes(searchText);
-  });
-
-  const completeTodos= (text)=>{
-    const newTodos =[...todos];
-    const todoIndex=newTodos.findIndex(
-      (todo) => todo.text === text
-    );
-    newTodos[todoIndex].completed=true;
-    saveTodos(newTodos)
-  }
-
-  const deleteTodos= (text)=>{
-    const newTodos =[...todos];
-    const todoIndex=newTodos.findIndex(
-      (todo) => todo.text === text
-    );
-    newTodos.splice(todoIndex,1);
-    saveTodos(newTodos)
-  }
+  
   return(
-    <AppUI
-      loading={loading}
-      error={error}
-      completedTodos={completedTodos}
-      totalTodos={totalTodos}
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      searchedTodos={searchedTodos}
-      completeTodos={completeTodos}
-      deleteTodos={deleteTodos}
-    />
-  )
-};
+    <TodoProvider>
+      <AppUI/>
+    </TodoProvider>
+  );
+}
 
 export default App;
