@@ -16,7 +16,7 @@ import { AppUI } from './AppUI';
 
 
 function App() {
-  const{item:todos,setItem:saveTodos,error,loading}= useLocalStorage('TODOS_V1',[]);
+  const{item:todos,saveItem:saveTodos,error,loading}= useLocalStorage('TODOS_V1',[]);
   const [searchValue,setSearchValue]= React.useState('');
   //console.warn(`Se esta buscando: ${searchValue}`)
 
