@@ -9,6 +9,7 @@ import { StartsTodos } from '../StartsTodos/StartsTodos';
 import { TodoContext } from '../TodoContext/TodoContext';
 import React, { useContext } from 'react';
 import { Modal } from '../Modal/Modal';
+import { TodoForm } from '../TodoForm/TodoForm';
 
 function AppUI(){
     const {loading,error,searchedTodos,completeTodos,deleteTodos,openModal,setOpenModal}=useContext(TodoContext);
@@ -35,7 +36,7 @@ function AppUI(){
         
         {openModal && (
             <Modal>
-            <p>HOLA MODAL !!!!!!!!!!</p>
+            <TodoForm/>
         </Modal>
         )}
 
