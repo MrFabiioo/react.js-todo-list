@@ -31,11 +31,11 @@ function AppUI(){
                 />
             ))}
             </TodoList>  
-        <CreateTodoButton/>
-
+        <CreateTodoButton setOpenModal={setOpenModal} />
+        
         {openModal && (
             <Modal>
-            FUNCIONALIDAD DE PORTAL
+            <p>HOLA MODAL !!!!!!!!!!</p>
         </Modal>
         )}
 
