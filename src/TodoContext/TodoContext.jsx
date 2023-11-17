@@ -8,6 +8,8 @@ function  TodoProvider({children}){
     const [searchValue,setSearchValue]= React.useState('');
     //console.warn(`Se esta buscando: ${searchValue}`)
 
+    const [openModal,setOpenModal]=React.useState(false);
+
     const completedTodos =todos.filter(todo=>!!todo.completed).length;
     const totalTodos=todos.length;
 
@@ -45,6 +47,8 @@ function  TodoProvider({children}){
         completeTodos,
         deleteTodos,
         loading,
+        openModal,
+        setOpenModal,
         error}}>
             {children}
         </TodoContext.Provider>

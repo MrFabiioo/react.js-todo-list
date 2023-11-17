@@ -8,9 +8,10 @@ import { TodosError } from '../TodosError/TodosError';
 import { StartsTodos } from '../StartsTodos/StartsTodos';
 import { TodoContext } from '../TodoContext/TodoContext';
 import React, { useContext } from 'react';
+import { Modal } from '../Modal/Modal';
 
 function AppUI(){
-    const {loading,error,searchedTodos,completeTodos,deleteTodos}=useContext(TodoContext);
+    const {loading,error,searchedTodos,completeTodos,deleteTodos,openModal,setOpenModal}=useContext(TodoContext);
     return (
     <>
         <TodoCounter/>  
@@ -31,6 +32,13 @@ function AppUI(){
             ))}
             </TodoList>  
         <CreateTodoButton/>
+
+        {openModal && (
+            <Modal>
+            FUNCIONALIDAD DE PORTAL
+        </Modal>
+        )}
+
         </>
 );
 }
